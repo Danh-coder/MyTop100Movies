@@ -25,10 +25,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Danh-coder/MyTop100Movies">
-    <div img src="https://giphy.com/embed/3o7rc0qU6m5hneMsuc" width="100%" height="100%" style="position:absolute;display:block" frameBorder="0" class="giphy-embed" allowFullScreen /></div>
-  </a>
-
   <h3 align="center" style="font-weight: bold">MyTop100Movies</h3>
 
   <p align="center">
