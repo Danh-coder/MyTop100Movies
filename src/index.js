@@ -1,5 +1,4 @@
 const express = require('express')
-const request = require('request-promise')
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const listRouter = require('./routers/list')

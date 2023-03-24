@@ -241,18 +241,47 @@ This method will delete your list
 
 This method will allow you to sign up
 
+| **Body** | **Data type** | **Constraint**       |
+|----------|---------------|----------------------|
+| username | String        | Default: 'Anonymous' |
+| email    | String        | Required, Unique     |
+| password | String        | Required             |
+
+| **Response** | **Data type** | **Value**                 |
+|--------------|---------------|---------------------------|
+| user         | Object        | username, email, _id, __v |
+| token        | Bearer token  |                           |
+
+
 #### POST [mytop100movies.b4a.app/users/login](https://mytop100movies.b4a.app/users/login) 
 
 This method will allow you to log in
+
+| **Body** | **Data type** | **Constraint**       |
+|----------|---------------|----------------------|
+| email    | String        | Required     |
+| password | String        | Required             |
+
+| **Response** | **Data type** | **Value**                 |
+|--------------|---------------|---------------------------|
+| user         | Object        | username, email, _id, __v |
+| token        | Bearer token  |                           |
 
 #### POST [mytop100movies.b4a.app/users/logout](https://mytop100movies.b4a.app/users/logout) 
 
 This method will allow you to log out an device
 
+| Headers       | Data type    | Value                      |
+|---------------|--------------|----------------------------|
+| Authorization | Bearer Token | Bearer <your_access_token> |
+
 #### POST [mytop100movies.b4a.app/users/logoutAll](https://mytop100movies.b4a.app/users/logoutAll) 
 
 This method will allow you to log out all your devices
 
+| Headers       | Data type    | Value                      |
+|---------------|--------------|----------------------------|
+| Authorization | Bearer Token | Bearer <your_access_token> |
 #### GET [mytop100movies.b4a.app/users/me](https://mytop100movies.b4a.app/users) 
 
 This method will provide your profile
@@ -261,9 +290,23 @@ This method will provide your profile
 |---------------|--------------|----------------------------|
 | Authorization | Bearer token | Bearer <your_access_token> |
 
+| Response | Data type |
+|----------|-----------|
+| _id      | String    |
+| username | String    |
+| email    | String    |
+| __v      | int       |
+
 #### GET [mytop100movies.b4a.app/users/{user_id}](https://mytop100movies.b4a.app/users/63661d7e9708e33cf8b2d805) 
 
 This method will provide a particular user profile
+
+| Response | Data type |
+|----------|-----------|
+| _id      | String    |
+| username | String    |
+| email    | String    |
+| __v      | int       |
 
 #### PATCH [mytop100movies.b4a.app/users/me](https://mytop100movies.b4a.app/users/me) 
 
