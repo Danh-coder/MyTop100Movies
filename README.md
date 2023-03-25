@@ -109,6 +109,15 @@ MyTop100Movies API cannot be done without these popular tools:
 
 This method will provide trending movies and tv shows
 
+| **Response**  | **Data type** | **Value**                                                                                                                                                                   |
+|---------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| page          | Int           | 1                                                                                                                                                                           |
+| results       | Array         | List of _Movie_                                                                                                                                                             |
+| _Movie_       | Object        | adult, backdrop_path, id, title, original_language, original_title, overview, poster_path, media_type, genre_ids, popularity, release_date, video, vote_average, vote_count |
+| total_pages   | Int           |                                                                                                                                                                             |
+| total_results | Int           |                                                                                                                                                                             |
+
+
 #### GET [mytop100movies.b4a.app/items/{item_type}/{item_id}](https://mytop100movies.b4a.app/items/movie/2)
 
 This method will provide details of a particular movie or TV show
@@ -117,6 +126,41 @@ This method will provide details of a particular movie or TV show
 |-----------|-----------|-----------------|
 | item_type | String    | 'movie' or 'tv' |
 | item_id   | Integer   |                 |
+
+| **Body**              | **Data type** | **Value**                                                                          |
+|-----------------------|---------------|------------------------------------------------------------------------------------|
+| adult                 | Boolean       |                                                                                    |
+| backdrop_path         | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image |
+| belongs_to_collection | Object        | id, name, poster_path, backdrop_path                                               |
+| budget                | Int           |                                                                                    |
+| genres                | Array         | List of _Genre_                                                                    |
+| _Genre_               | Object        | id, name                                                                           |
+| homepage              | String        |                                                                                    |
+| id                    | Int           |                                                                                    |
+| imdb_id               | String        |                                                                                    |
+| original_language     | String        |                                                                                    |
+| original_title        | String        |                                                                                    |
+| overview              | String        |                                                                                    |
+| popularity            | Int           |                                                                                    |
+| poster_path           | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image |
+| production_companies  | Array         | List of _Company_                                                                  |
+| _Company_             | Object        | id, logo_path, name, origin_country                                                |
+| production_countries  | Array         | List of _Country_                                                                  |
+| _Country_             | Object        | iso_3166_1, name                                                                   |
+| release_date          | Date          |                                                                                    |
+| revenue         | Int     |                               |
+| runtime         | Int     |                               |
+| spoken_language | Array   | List of _Language_            |
+| _Language_      | Object  | english_name, iso_639_1, name |
+| status          | String  |                               |
+| tagline         | String  |                               |
+| title           | String  |                               |
+| video           | Boolean |                               |
+| vote_average    | Int     |                               |
+| vote_count      | Int     |                               |
+| vote_count      | Int     |                               |
+
+
 
 #### POST [mytop100movies.b4a.app/items/{item_type}/{item_id}](https://mytop100movies.b4a.app/items/movie/2)
 
@@ -131,6 +175,19 @@ This method will create or update your rating
 | item_type | String    | 'movie' or 'tv' |
 | item_id   | Integer   |                 |
 
+| **Body** | **Data type** | **Constraint**   |
+|----------|---------------|------------------|
+| rating   | Float         | 0 <= rating <= 5 |
+
+| **Response** | **Data type** | **Value**           |
+|--------------|---------------|---------------------|
+| _id          | String        |                     |
+| media_type   | String        | 'movie' or 'tv'     |
+| media_id     | String        |                     |
+| ratings      | Array         | List of _Rating_    |
+| _Rating_       | Object        | author, rating, _id |
+| __v          | Int           |                     |
+
 #### DELETE [mytop100movies.b4a.app/items/{item_type}/{item_id}](https://mytop100movies.b4a.app/items/movie/2) 
 
 This method will remove your rating
@@ -143,6 +200,15 @@ This method will remove your rating
 |-----------|-----------|-----------------|
 | item_type | String    | 'movie' or 'tv' |
 | item_id   | Integer   |                 |
+
+| **Response** | **Data type** | **Value**           |
+|--------------|---------------|---------------------|
+| _id          | String        |                     |
+| media_type   | String        | 'movie' or 'tv'     |
+| media_id     | String        |                     |
+| ratings      | Array         | List of _Rating_    |
+| _Rating_       | Object        | author, rating, _id |
+| __v          | Int           |                     |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -291,7 +357,7 @@ This method will provide your profile
 | _id      | String    |
 | username | String    |
 | email    | String    |
-| __v      | int       |
+| __v      | Int       |
 
 #### GET [mytop100movies.b4a.app/users/{user_id}](https://mytop100movies.b4a.app/users/63661d7e9708e33cf8b2d805) 
 
@@ -302,7 +368,7 @@ This method will provide a particular user profile
 | _id      | String    |
 | username | String    |
 | email    | String    |
-| __v      | int       |
+| __v      | Int       |
 
 #### PATCH [mytop100movies.b4a.app/users/me](https://mytop100movies.b4a.app/users/me) 
 
@@ -312,6 +378,13 @@ This method will update your profile
 |---------------|--------------|----------------------------|
 | Authorization | Bearer token | Bearer <your_access_token> |
 
+| **Body** | **Data type** | **Constraint** |
+|----------|---------------|----------------|
+| username | String        |                |
+| email    | String        | Unique         |
+| password | String        |                |
+
+
 #### DELETE [mytop100movies.b4a.app/users/me](https://mytop100movies.b4a.app/users/me) 
 
 This method will delete your account and your lists
@@ -319,6 +392,13 @@ This method will delete your account and your lists
 | Headers       | Data type    | Value                      |
 |---------------|--------------|----------------------------|
 | Authorization | Bearer token | Bearer <your_access_token> |
+
+| Response | Data type |
+|----------|-----------|
+| _id      | String    |
+| username | String    |
+| email    | String    |
+| __v      | Int       |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
