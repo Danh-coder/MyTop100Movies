@@ -130,7 +130,7 @@ This method will provide details of a particular movie or TV show
 | **Body**              | **Data type** | **Value**                                                                          |
 |-----------------------|---------------|------------------------------------------------------------------------------------|
 | adult                 | Boolean       |                                                                                    |
-| backdrop_path         | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image |
+| backdrop_path         | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image (Example: https://image.tmdb.org/t/p/original/jYtNUfMbU6DBbmd4LUS19u4hF4p.jpg) |
 | belongs_to_collection | Object        | id, name, poster_path, backdrop_path                                               |
 | budget                | Int           |                                                                                    |
 | genres                | Array         | List of _Genre_                                                                    |
@@ -142,7 +142,7 @@ This method will provide details of a particular movie or TV show
 | original_title        | String        |                                                                                    |
 | overview              | String        |                                                                                    |
 | popularity            | Int           |                                                                                    |
-| poster_path           | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image |
+| poster_path           | String        | an _URL_ but should add with "https://image.tmdb.org/t/p/original/" to fetch image (Example: https://image.tmdb.org/t/p/original/jYtNUfMbU6DBbmd4LUS19u4hF4p.jpg) |
 | production_companies  | Array         | List of _Company_                                                                  |
 | _Company_             | Object        | id, logo_path, name, origin_country                                                |
 | production_countries  | Array         | List of _Country_                                                                  |
