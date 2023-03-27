@@ -222,6 +222,18 @@ This method will provide all the lists you have created so far
 |---------------|--------------|----------------------------|
 | Authorization | Bearer token | Bearer <your_access_token> |
 
+| Response  | Data type | Value        |
+|-----------|-----------|--------------|
+| _id       | String    | List id      |
+| name      | String    |              |
+| items     | Array     | List of _Item_ |
+| _Item_      | Object    | _id, item    |
+| author    | String    | author id    |
+| createdAt | Date      |              |
+| updatedAt | Date      |              |
+| __v       | Int       |              |
+
+
 #### GET [mytop100movies.b4a.app/{user_id}/lists](https://mytop100movies.b4a.app/63661d7e9708e33cf8b2d805/lists) 
 
 This method will provide all the lists that a particular user has created so far
@@ -229,6 +241,18 @@ This method will provide all the lists that a particular user has created so far
 | Params  | Data type | Value |
 |---------|-----------|-------|
 | user_id | String    |       |
+
+| Response  | Data type | Value        |
+|-----------|-----------|--------------|
+| _id       | String    | List id      |
+| name      | String    |              |
+| items     | Array     | List of _Item_ |
+| _Item_      | Object    | _id, item    |
+| author    | String    | author id    |
+| createdAt | Date      |              |
+| updatedAt | Date      |              |
+| __v       | Int       |              |
+
 
 #### GET [mytop100movies.b4a.app/me/lists/{list_id}](https://mytop100movies.b4a.app/me/lists/63662ec98b8338e39f9c6833) 
 
@@ -242,6 +266,17 @@ This method will provide your list details
 |---------|-----------|-------|
 | list_id | String    |       |
 
+| **Response** | **Data type** | **Value**    |
+|--------------|---------------|--------------|
+| _id          | String        | List id      |
+| name         | String        |              |
+| items        | Array         | List of _Item_ |
+| _Item_         | Object        | _id, item    |
+| author       | String        | author id    |
+| createdAt    | Date          |              |
+| updatedAt    | Date          |              |
+| __v          | Int           |              |
+
 #### GET [mytop100movies.b4a.app/{user_id}/lists/{list_id}](https://mytop100movies.b4a.app/63661d7e9708e33cf8b2d805/lists/636de56acd06bb35fbf6bccd) 
 
 This method will provide another user's list details
@@ -251,6 +286,17 @@ This method will provide another user's list details
 | user_id | String    |       |
 | list_id | String    |       |
 
+| **Response** | **Data type** | **Value**    |
+|--------------|---------------|--------------|
+| _id          | String        | List id      |
+| name         | String        |              |
+| items        | Array         | List of _Item_ |
+| Item         | Object        | _id, item    |
+| author       | String        | author id    |
+| createdAt    | Date          |              |
+| updatedAt    | Date          |              |
+| __v          | Int           |              |
+
 #### POST [mytop100movies.b4a.app/me/lists](https://mytop100movies.b4a.app/me/lists) 
 
 This method will create you a new movie list
@@ -258,6 +304,20 @@ This method will create you a new movie list
 | Headers       | Data type    | Value                      |
 |---------------|--------------|----------------------------|
 | Authorization | Bearer token | Bearer <your_access_token> |
+
+| Body | Data type | Constraint       |
+|------|-----------|------------------|
+| name | String    | Required, Unique |
+
+| **Response** | **Data type** | **Value**    |
+|--------------|---------------|--------------|
+| _id          | String        | List id      |
+| name         | String        |              |
+| items        | Array         | [ ] |
+| author       | String        | author id    |
+| createdAt    | Date          |              |
+| updatedAt    | Date          |              |
+| __v          | Int           |              |
 
 #### POST [mytop100movies.b4a.app/me/lists/{list_id}](https://mytop100movies.b4a.app/me/lists/63662ec98b8338e39f9c6833)
 
@@ -271,9 +331,27 @@ This method will add movie(s) or tv show(s) to your list
 |---------|-----------|-------|
 | list_id | String    |       |
 
+| Body       | Data type | Constraint | Value                |
+|------------|-----------|------------|----------------------|
+| items      | Array     |            | List of _Item_       |
+| _Item_     | Object    |            | media_id, media_type |
+| media_id   | Int       | Required   |                      |
+| media_type | String    | Required   | "movie" or "tv"      |
+
+| **Response** | **Data type** | **Value**    |
+|--------------|---------------|--------------|
+| _id          | String        | List id      |
+| name         | String        |              |
+| items        | Array         | List of _Item_ |
+| _Item_         | Object        | _id, item    |
+| author       | String        | author id    |
+| createdAt    | Date          |              |
+| updatedAt    | Date          |              |
+| __v          | Int           |              |
+
 #### PATCH [mytop100movies.b4a.app/me/lists/{list_id}](https://mytop100movies.b4a.app/me/lists/63662ec98b8338e39f9c6833)
 
-This method will update your list description
+This method will update your list name
 
 | Headers       | Data type    | Value                      |
 |---------------|--------------|----------------------------|
@@ -282,6 +360,21 @@ This method will update your list description
 | Params  | Data type | Value |
 |---------|-----------|-------|
 | list_id | String    |       |
+
+| Body | Data type | Constraint       |
+|------|-----------|------------------|
+| name | String    | Required, Unique |
+
+| **Response** | **Data type** | **Value**    |
+|--------------|---------------|--------------|
+| _id          | String        | List id      |
+| name         | String        |              |
+| items        | Array         | List of _Item_ |
+| _Item_         | Object        | _id, item    |
+| author       | String        | author id    |
+| createdAt    | Date          |              |
+| updatedAt    | Date          |              |
+| __v          | Int           |              |
 
 #### DELETE [mytop100movies.b4a.app/me/lists/{list_id}](https://mytop100movies.b4a.app/me/lists/63662ec98b8338e39f9c6833)
 

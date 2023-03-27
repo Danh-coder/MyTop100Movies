@@ -20,6 +20,7 @@ router.post('/me/lists', auth, async (req, res) => {
 router.post('/me/lists/:id', auth, async (req, res) => {
     try {
         const list = await List.findById(req.params.id)
+        if (!list) throw new Error()
 
         for (let item of req.body.items) {
             try {
